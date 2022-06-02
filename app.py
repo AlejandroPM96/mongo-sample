@@ -9,7 +9,7 @@ import os
 
 
 app = Flask(__name__)
-mongo_client = MongoClient(os.environ['MONGO_URI']) 
+mongo_client = MongoClient("mongodb://127.0.0.1:27017/") 
 db = mongo_client["EPAMTEST"]
 collection = db["random"]
 
