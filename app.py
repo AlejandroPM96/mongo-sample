@@ -19,6 +19,14 @@ class JSONEncoder(json.JSONEncoder):
             return str(o)
         return json.JSONEncoder.default(self, o)
 
+@app.route("/")
+def getHome():
+    """
+    The endpoint for checking health of app
+    """
+    return render_template('index.html', number=number)
+
+
 @app.route("/health")
 def getHealth():
     """
