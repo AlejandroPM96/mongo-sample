@@ -1,5 +1,5 @@
 #Hello tesing pushes
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 from pymongo import MongoClient 
 import json
@@ -18,6 +18,14 @@ class JSONEncoder(json.JSONEncoder):
         if isinstance(o, ObjectId):
             return str(o)
         return json.JSONEncoder.default(self, o)
+
+@app.route("/")
+def getHome():
+    """
+    The endpoint for checking health of app
+    """
+    return render_template('index.html', number=7)
+
 
 @app.route("/health")
 def getHealth():
