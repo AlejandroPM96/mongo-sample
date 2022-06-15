@@ -38,26 +38,6 @@ def getHealth():
 def getPalindrome():
     """
     The endpoint for retrieve all docs
-
-    **Example request**
-        .. sourcecode:: http
-
-            GET /palindrome?word=anilina
-            HOST: example.com
-            ACCEPT: application/json
-
-    Example Response:
-    {
-        "name": "anilina",
-        "palindrome": true,
-        "sorted": {
-            "a": 2,
-            "i": 2,
-            "l": 1,
-            "n": 2
-        },
-        "length": 7
-    }
     """
     x = collection.find()
     result = JSONEncoder().encode(list(x))
