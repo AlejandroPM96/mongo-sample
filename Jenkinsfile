@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         CREDS = credentials('jumpserver')
+        ANSIBLE_CONFIG='etc/ansible/ansible.cfg'
     }
     stages {
         stage('Cleaning ssh hosts') {
