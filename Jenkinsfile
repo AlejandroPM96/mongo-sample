@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Cleaning ssh hosts') {
             steps{
-                sh('rm ~/.ssh/known_hosts 2> /dev/null')
+                sh('touch ~/.ssh/known_hosts')
+                sh('rm ~/.ssh/known_hosts')
             }
         }
         stage('Execute ansible') {
