@@ -17,8 +17,8 @@ pipeline {
                     inventory: 'hosts',
                     installation: 'ansible',
                     playbook: 'playbook.yml',
-                    credentialsId: '${CREDS}'
-                    hostKeyChecking: false,
+                    credentialsId: '${CREDS}',
+                    hostKeyChecking: false
                 )
             }
         }
