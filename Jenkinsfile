@@ -17,14 +17,10 @@ pipeline {
                     script{
                         sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
                         HOST_IP=sh(script: "gcloud compute instances describe jump-server --format='get(networkInterfaces[0].accessConfigs[0].natIP)' --zone=us-central1-a", returnStdout: true)
+                        sh('echo ${HOST_IP}')
                         sh('echo -en ${HOST_IP} > hosts')
                     }
                 }
-            }
-        }
-        stage('config hosts'){
-            steps{
-                sh('echo -en ${HOST_IP} > hosts')
             }
         }
         stage('Execute ansible') {
