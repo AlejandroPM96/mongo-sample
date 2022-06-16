@@ -16,7 +16,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'GCLOUD_CREDS', variable: 'GC_KEY')]) {
                     script{
                         sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-                        export HOST_IP = sh(script: "gcloud compute instances describe jump-server --format='get(networkInterfaces[0].accessConfigs[0].natIP)' --zone=us-central1-a", returnStdout: true).trim()
+                        HOST_IP = sh("gcloud compute instances describe jump-server --format='get(networkInterfaces[0].accessConfigs[0].natIP)' --zone=us-central1-a").trim()
                         sh('echo ${HOST_IP}')
                         sh('echo -en ${HOST_IP} > hosts')
                     }
