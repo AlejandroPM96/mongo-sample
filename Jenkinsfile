@@ -11,7 +11,8 @@ pipeline {
                 ansiblePlaybook(
                     inventory: 'hosts',
                     installation: 'ansible',
-                    playbook: 'playbook.yml'
+                    playbook: 'playbook.yml',
+                    credentialsId: '$jumpserver'
                 )
             }
         }
