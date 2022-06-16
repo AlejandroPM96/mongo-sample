@@ -17,7 +17,7 @@ pipeline {
                     inventory: 'hosts',
                     installation: 'ansible',
                     playbook: 'playbook.yml',
-                    credentialsId: '${CREDS_PSW}',
+                    credentialsId: '/etc/ansible/key',
                     hostKeyChecking: false
                 )
             }
