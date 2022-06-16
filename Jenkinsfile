@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    enviroment {
+        CREDS = credentials('jumpserver')
+    }
     stages {
         stage('Cleaning ssh hosts') {
             steps{
@@ -14,7 +17,8 @@ pipeline {
                     inventory: 'hosts',
                     installation: 'ansible',
                     playbook: 'playbook.yml',
-                    credentialsId: '$jumpserver'
+                    credentialsId: '${CREDS}'
+                    hostKeyChecking: false,
                 )
             }
         }
