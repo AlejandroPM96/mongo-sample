@@ -8,7 +8,7 @@ pipeline {
             steps{
                 sh('touch ~/.ssh/known_hosts')
                 sh('rm ~/.ssh/known_hosts')
-                sh('echo $jumpserver')
+                sh('echo ${CREDS}')
             }
         }
         stage('Execute ansible') {
