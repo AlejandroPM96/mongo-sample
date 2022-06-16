@@ -8,7 +8,7 @@ pipeline {
             steps{
                 sh('touch ~/.ssh/known_hosts')
                 sh('rm ~/.ssh/known_hosts')
-                sh('echo ${CREDS}')
+                sh('echo ${CREDS_PSW}')
             }
         }
         stage('Execute ansible') {
@@ -17,7 +17,7 @@ pipeline {
                     inventory: 'hosts',
                     installation: 'ansible',
                     playbook: 'playbook.yml',
-                    credentialsId: '${CREDS}',
+                    credentialsId: '${CREDS_PSW}',
                     hostKeyChecking: false
                 )
             }
